@@ -1,0 +1,67 @@
+﻿@model SenthilTask.Models.UserClass
+@{
+    ViewBag.Title = "Index";
+}
+@*@if (ViewData.ModelState.IsValid)
+{
+    if (@ViewBag.Name != null)
+    {
+        <b>
+            Name : @ViewBag.Name<br />
+            Email : @ViewBag.Email
+        </b>
+    }
+}*@
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary(true)
+    <div style="text-align:center;width: 26rem;">
+    
+    <div class="tab-content">
+        <div class="tab-pane fade show active" id="pills-login" role="tabpanel" aria-labelledby="tab-login">
+            <form>
+                <fieldset>
+                    <h4 class="text-primary" style="font-weight:bold;">Login</h4>
+                    <table>
+                            <tr class="form-outline mb-4">
+                            <td>
+                                    @Html.LabelFor(model => model.Email, new { @class= "form-label" })
+                            </td>
+                            <td>
+                                    @Html.EditorFor(model => model.Email, new { @class= "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Email)
+                            </td>
+                        </tr>
+
+                         <tr class="form-outline mb-4">
+                            <td>
+                                    @Html.LabelFor(model => model.Password, new { @class= "form-label" })
+                            </td>
+                            <td>
+                                    @Html.EditorFor(model => model.Password, new { @class= "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Password)
+                            </td>
+                        </tr>
+                    </table>
+
+                    <button type="submit" class="btn btn-primary btn-block mb-4">Login</button>
+                    <div class="text-center">
+                        <p>Not a member? <a asp-action="Create">Register</a></p>
+                    </div>
+
+                    @if (ViewBag.Message != null)
+                    {
+                        <script type="text/javascript">
+
+                            window.onload = function () {
+                                alert("@ViewBag.Message");
+                            };
+                        </script>
+                    }
+
+                </fieldset>
+            </form>
+        </div>
+    </div>
+    </div>
+}

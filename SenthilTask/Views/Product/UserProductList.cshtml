@@ -1,0 +1,44 @@
+﻿@model IEnumerable<SenthilTask.Models.Product>
+
+@{
+    ViewData["Title"] = "UserProductList";
+}
+<p class="float-right">
+    <a asp-action="LogOff" asp-controller="UserRegistration" class="btn btn-outline-danger">LogOut</a>
+</p>
+<h1>Product List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+           
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+           
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductQuantity)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProductPrice)
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>

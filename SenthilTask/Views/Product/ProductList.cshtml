@@ -1,0 +1,54 @@
+﻿@model IEnumerable<SenthilTask.Models.Product>
+
+@{
+    ViewData["Title"] = "ProductList";
+}
+<p class="float-right">
+    <a asp-action="LogOff" asp-controller="UserRegistration" class="btn btn-outline-danger">LogOut</a>
+</p>
+<h1>ProductList</h1>
+<p class="float-right">
+    <a asp-action="Create" class="btn btn-outline-primary">Add New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.ProductName)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductQuantity)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ProductPrice)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (Model != null)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                   
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductQuantity)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ProductPrice)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Edit", "Create", new {ProductID=item.ProductID,item.ProductName,item.ProductQuantity,item.ProductPrice},new {@class="btn btn-success"}) |
+                        @Html.ActionLink("Delete", "Delete", new {id=item.ProductID},new {@class="btn btn-danger",onclick="return confirm('Do you really want to Delete this record?')"})
+
+                    </td>
+                </tr>
+            }
+        }
+    </tbody>
+</table>
